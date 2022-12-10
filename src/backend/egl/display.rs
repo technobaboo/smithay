@@ -962,7 +962,7 @@ impl EGLBufferReader {
         let format = match format {
             x if x == ffi::egl::TEXTURE_RGB as i32 => Format::RGB,
             x if x == ffi::egl::TEXTURE_RGBA as i32 => Format::RGBA,
-            ffi::egl::TEXTURE_EXTERNAL_WL => Format::External,
+            ffi::egl::TEXTURE_EXTERNAL_WL => Format::RGBA,
             ffi::egl::TEXTURE_Y_UV_WL => {
                 return Err(BufferAccessError::UnsupportedMultiPlanarFormat(Format::Y_UV))
             }
