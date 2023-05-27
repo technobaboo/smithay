@@ -1,0 +1,38 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="rustdoc"><meta name="description" content="@ingroup event_pointer"><title>libinput_event_pointer_get_axis_source in input::ffi - Rust</title><link rel="preload" as="font" type="font/woff2" crossorigin href="../../static.files/SourceSerif4-Regular-46f98efaafac5295.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../static.files/FiraSans-Regular-018c141bf0843ffd.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../static.files/FiraSans-Medium-8f9a781e4970d388.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../static.files/SourceCodePro-Regular-562dcc5011b6de7d.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../static.files/SourceSerif4-Bold-a2c9cd1067f8b328.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../static.files/SourceCodePro-Semibold-d899c5a5c4aeb14a.ttf.woff2"><link rel="stylesheet" href="../../static.files/normalize-76eba96aa4d2e634.css"><link rel="stylesheet" href="../../static.files/rustdoc-f3501f0f5ae15dfb.css" id="mainThemeStyle"><div id="rustdoc-vars" data-root-path="../../" data-static-root-path="../../static.files/" data-current-crate="input" data-themes="" data-resource-suffix="" data-rustdoc-version="1.71.0-nightly (1a5f8bce7 2023-05-26)" data-search-js="search-4926e5fc22a5646a.js" data-settings-js="settings-de11bff964e9d4e5.js" data-settings-css="settings-8c76f75bfb6bd192.css" data-theme-light-css="light-0f8c037637f9eb3e.css" data-theme-dark-css="dark-1097f8e92a01e3cf.css" data-theme-ayu-css="ayu-614652228113ac93.css" ></div><script src="../../static.files/storage-62ce34ea385b278a.js"></script><script defer src="sidebar-items.js"></script><script defer src="../../static.files/main-f0540c1d82cde29b.js"></script><noscript><link rel="stylesheet" media="(prefers-color-scheme:light)" href="../../static.files/light-0f8c037637f9eb3e.css"><link rel="stylesheet" media="(prefers-color-scheme:dark)" href="../../static.files/dark-1097f8e92a01e3cf.css"><link rel="stylesheet" href="../../static.files/noscript-13285aec31fa243e.css"></noscript><link rel="alternate icon" type="image/png" href="../../static.files/favicon-16x16-8b506e7a72182f1c.png"><link rel="alternate icon" type="image/png" href="../../static.files/favicon-32x32-422f7d1d52889060.png"><link rel="icon" type="image/svg+xml" href="../../static.files/favicon-2c020d218678b618.svg"></head><body class="rustdoc fn"><!--[if lte IE 11]><div class="warning">This old browser is unsupported and will most likely display funky things.</div><![endif]--><nav class="mobile-topbar"><button class="sidebar-menu-toggle">&#9776;</button><a class="logo-container" href="../../input/index.html"><img class="rust-logo" src="../../static.files/rust-logo-151179464ae7ed46.svg" alt="logo"></a><h2></h2></nav><nav class="sidebar"><a class="logo-container" href="../../input/index.html"><img class="rust-logo" src="../../static.files/rust-logo-151179464ae7ed46.svg" alt="logo"></a><div class="sidebar-elems"><h2><a href="index.html">In input::ffi</a></h2></div></nav><main><div class="width-limiter"><nav class="sub"><form class="search-form"><span></span><input class="search-input" name="search" aria-label="Run search in the documentation" autocomplete="off" spellcheck="false" placeholder="Click or press ‘S’ to search, ‘?’ for more options…" type="search"><div id="help-button" title="help" tabindex="-1"><a href="../../help.html">?</a></div><div id="settings-menu" tabindex="-1"><a href="../../settings.html" title="settings"><img width="22" height="22" alt="Change settings" src="../../static.files/wheel-7b819b6101059cd0.svg"></a></div></form></nav><section id="main-content" class="content"><div class="main-heading"><h1>Function <a href="../index.html">input</a>::<wbr><a href="index.html">ffi</a>::<wbr><a class="fn" href="#">libinput_event_pointer_get_axis_source</a><button id="copy-path" title="Copy item path to clipboard"><img src="../../static.files/clipboard-7571035ce49a181d.svg" width="19" height="18" alt="Copy item path"></button></h1><span class="out-of-band"><button id="toggle-all-docs" title="collapse all docs">[<span>&#x2212;</span>]</button></span></div><pre class="rust item-decl"><code>pub unsafe extern &quot;C&quot; fn libinput_event_pointer_get_axis_source(
+    event: <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.pointer.html">*mut </a><a class="struct" href="struct.libinput_event_pointer.html" title="struct input::ffi::libinput_event_pointer">libinput_event_pointer</a>
+) -&gt; <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.u32.html">u32</a></code></pre><details class="toggle top-doc" open><summary class="hideme"><span>Expand description</span></summary><div class="docblock"><p>@ingroup event_pointer</p>
+<p>Return the source for a given axis event. Axis events (scroll events) can
+be caused by a hardware item such as a scroll wheel or emulated from
+other input sources, such as two-finger or edge scrolling on a
+touchpad.</p>
+<p>If the source is @ref LIBINPUT_POINTER_AXIS_SOURCE_FINGER, libinput
+guarantees that a scroll sequence is terminated with a scroll value of 0.
+A caller may use this information to decide on whether kinetic scrolling
+should be triggered on this scroll sequence.
+The coordinate system is identical to the cursor movement, i.e. a
+scroll value of 1 represents the equivalent relative motion of 1.</p>
+<p>If the source is @ref LIBINPUT_POINTER_AXIS_SOURCE_WHEEL, no terminating
+event is guaranteed (though it may happen).
+Scrolling is in discrete steps, the value is the angle the wheel moved
+in degrees. The default is 15 degrees per wheel click, but some mice may
+have differently grained wheels. It is up to the caller how to interpret
+such different step sizes. Callers should use
+libinput_event_pointer_get_scroll_value_v120() for a simpler API of
+handling scroll wheel events of different step sizes.</p>
+<p>If the source is @ref LIBINPUT_POINTER_AXIS_SOURCE_CONTINUOUS, libinput
+guarantees that a scroll sequence is terminated with a scroll value of 0.
+The coordinate system is identical to the cursor movement, i.e. a
+scroll value of 1 represents the equivalent relative motion of 1.</p>
+<p>@deprecated The source @ref LIBINPUT_POINTER_AXIS_SOURCE_WHEEL_TILT is
+deprecated as of libinput 1.16. No device has ever sent this source.</p>
+<p>For pointer events that are not of type @ref LIBINPUT_EVENT_POINTER_AXIS,
+this function returns 0.</p>
+<p>@note It is an application bug to call this function for events other than
+@ref LIBINPUT_EVENT_POINTER_AXIS.</p>
+<p>@note This function is superfluous as of libinput 1.19. The event
+codes for @ref LIBINPUT_EVENT_POINTER_SCROLL_WHEEL, @ref
+LIBINPUT_EVENT_POINTER_SCROLL_FINGER and @ref
+LIBINPUT_EVENT_POINTER_SCROLL_CONTINUOUS have the axis source encoded in
+the event type.</p>
+<p>@return The source for this axis event</p>
+</div></details></section></div></main></body></html>

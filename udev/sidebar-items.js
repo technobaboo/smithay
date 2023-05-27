@@ -1,0 +1,1 @@
+window.SIDEBAR_ITEMS = {"enum":["EventType"],"externcrate":["ffi"],"struct":["Attributes","Device","Entry","Enumerator","Event","List","MonitorBuilder","MonitorSocket","Udev"],"trait":["AsRaw","AsRawWithContext","FromRaw","FromRawWithContext"],"type":["Devices","Properties"]};

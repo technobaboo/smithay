@@ -1,0 +1,1 @@
+window.SIDEBAR_ITEMS = {"enum":["BufferAccessError","EGLError","Error","Format","SwapBuffersError"],"fn":["get_proc_address","wrap_egl_call"],"mod":["context","display","ffi","native","surface"],"struct":["EGLBuffer","EGLDevice","EglExtensionNotSupportedError","MakeCurrentError"]};

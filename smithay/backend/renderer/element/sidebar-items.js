@@ -1,0 +1,1 @@
+window.SIDEBAR_ITEMS = {"enum":["RenderElementPresentationState","RenderingReason","UnderlyingStorage"],"fn":["default_primary_scanout_output_compare"],"macro":["render_elements"],"mod":["memory","solid","surface","texture","utils"],"struct":["Id","PrimaryScanoutOutput","RenderElementState","RenderElementStates","Wrap"],"trait":["AsRenderElements","Element","RenderElement"]};

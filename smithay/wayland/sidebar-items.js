@@ -1,0 +1,1 @@
+window.SIDEBAR_ITEMS = {"mod":["buffer","compositor","content_type","data_device","dmabuf","fractional_scale","idle_inhibit","input_method","keyboard_shortcuts_inhibit","output","presentation","primary_selection","relative_pointer","seat","shell","shm","socket","tablet_manager","text_input","viewporter","virtual_keyboard","xdg_activation"]};
