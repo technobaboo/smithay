@@ -1109,7 +1109,8 @@ impl ImportEgl for GlesRenderer {
         let texture = GlesTexture(Rc::new(GlesTextureInternal {
             texture: tex,
             format: match egl.format {
-                EGLFormat::RGB | EGLFormat::RGBA | EGLFormat::External => Some(ffi::RGBA8),
+                EGLFormat::RGB | EGLFormat::RGBA => Some(ffi::RGBA8),
+                EGLFormat::External => Some(ffi::RGBA8),
                 _ => unreachable!("EGLBuffer currenly does not expose multi-planar buffers to us"),
             },
             has_alpha: !matches!(egl.format, EGLFormat::RGB),
